@@ -5,7 +5,6 @@ import os.path
 import sys
 import subprocess
 import platform
-import struct
 # import winshell
 from win32com.client import Dispatch
 
@@ -42,11 +41,6 @@ def shortDirectoryName(folder):
     result = result.replace("Program Files", "Prog")
     result = result.replace("Microsoft Visual Studio", "MSVC")
     return result
-
-
-def isPython32Bits():
-    pythonBits = struct.calcsize("P") * 8
-    return False # pythonBits == 32
 
 
 def isOs64bit():

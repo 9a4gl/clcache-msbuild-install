@@ -126,16 +126,7 @@ def makeInitialChecks():
     if not env_utils.hasProgramInPath("pip"):
         print("This program needs pip 3")
         return False
-    if not env_utils.isPython32Bits():
-        errorMessage = """Detected python 64 bits...
-Alas, this program needs python 3 *32 bits* version ! 
-Please make sure that the default python in your path is a 32 bits version:
-this is due to the fact that MSVC and msbuild is itself a 32 bits program, and 
-clcache needs to communicate with msbuild via a 32 bits dll (FileTracker.dll)
-Trust me, I am as disappointed as you.
-        """
-        print(errorMessage)
-        return False
+
     if not "python 3" in env_utils.callCmdGetOutput("python --version").lower():
         print("Bad python version : this program needs python 3")
         return False
@@ -228,7 +219,7 @@ def disableServer():
     return True
 
 
-def implMain():
+def main():
     epilog = r"""Actions summary:
     status         : Show the install status and tells if clcache is enabled    
     install:       : Install and enable clcache for msbuild integration
@@ -353,10 +344,7 @@ between different MSVC installations, clcache will be activated for all instance
     return True
 
 
-def main():
-    if not implMain():
+if __name__ == "__main__":
+    if not main():
         print("FAILURE")
         sys.exit(1)
-
-if __name__ == "__main__":
-    main()
