@@ -5,7 +5,7 @@ from . import env_utils
 from . import locate_cl_exe
 
 CLCACHE_REPO = "https://github.com/9a4gl/clcache.git"
-CLCACHE_BRANCH = "clcache-msbuild-install"
+CLCACHE_BRANCH = "master"
 THIS_DIR = env_utils.fileDirNameAbsolute(__file__)
 CLCACHE_REPO_DIR = env_utils.dirNameAbsolute(THIS_DIR + "\\..\\clcache")
 MSBUILD_USER_SETTINGS_DIR = env_utils.appDataPathLocal() + "\\Microsoft\\MSBuild\\v4.0"
